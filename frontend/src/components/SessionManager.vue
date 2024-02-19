@@ -3,47 +3,61 @@
     <h1 class="sm-title">Vue Session Manager</h1>
     <div class="sm-card">
       <div v-if="isLoggedIn">
-        <button @click="logoutUser" class="logout-button" >Logout</button>
+        <button @click="logoutUser" class="logout-button">Logout</button>
         <table class="table">
           <thead class="thead-dark">
-          <tr class="table-headers">
-            <th scope="col">ID</th>
-            <th scope="col">email</th>
-            <th scope="col">Token</th>
-          </tr>
+            <tr class="table-headers">
+              <th scope="col">ID</th>
+              <th scope="col">email</th>
+              <th scope="col">Token</th>
+            </tr>
           </thead>
           <tbody>
-          <tr class="table-rows">
-            <th class="table-row">[{{ this.getUserID }}}]</th>
-            <th class="table-row table-row-username">[{{ this.getUserEmail }}}]</th>
-            <th class="table-row">[{{ this.getAuthToken }}}]</th>
-          </tr>
+            <tr class="table-rows">
+              <th class="table-row">[{{ this.getUserID }}}]</th>
+              <th class="table-row table-row-username">
+                [{{ this.getUserEmail }}}]
+              </th>
+              <th class="table-row">[{{ this.getAuthToken }}}]</th>
+            </tr>
           </tbody>
         </table>
       </div>
       <div v-else>
         <h3>Sign Up!</h3>
-          <form @submit="onSignUp" class="sign-up-form">
-            <input class="sign-up-form-email" type="email" v-model="signUpEmail" placeholder="Email" />
-            <br />
-            <input class="sign-up-form-password"
-                   type="password"
-                   v-model="signUpPassword"
-                   placeholder="Password"
-            />
-            <br />
-            <input type="submit" value="Sign up" class="sign-up-form-submit" />
-          </form>
+        <form @submit="onSignUp" class="sign-up-form">
+          <input
+            class="sign-up-form-email"
+            type="email"
+            v-model="signUpEmail"
+            placeholder="Email"
+          />
+          <br />
+          <input
+            class="sign-up-form-password"
+            type="password"
+            v-model="signUpPassword"
+            placeholder="Password"
+          />
+          <br />
+          <input type="submit" value="Sign up" class="sign-up-form-submit" />
+        </form>
         <hr />
         <br />
         <h3>Login!</h3>
         <form @submit="onLogin" class="sign-up-form">
-          <input class="login-form-email" type="email" v-model="loginEmail" placeholder="Email" />
+          <input
+            class="login-form-email"
+            type="email"
+            v-model="loginEmail"
+            placeholder="Email"
+          />
           <br />
-          <input class="login-form-password"
-                 type="password"
-                 v-model="loginPassword"
-                 placeholder="Password"
+          <input
+            class="login-form-password"
+            type="password"
+            v-model="loginPassword"
+            placeholder="Password"
           />
           <br />
           <input type="submit" value="Login" class="login-form-submit" />
@@ -55,7 +69,7 @@
 
 <script>
 import "@/store/index.js";
-import {mapActions, mapGetters} from "vuex";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "SessionManager",
   computed: {
@@ -99,8 +113,8 @@ export default {
       this.loginEmail = "";
       this.loginPassword = "";
     },
-  }
-}
+  },
+};
 </script>
 
 <style scoped>
