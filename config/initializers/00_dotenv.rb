@@ -1,5 +1,5 @@
 
 Rails.application.credentials.tap do |d|
-  d.jwt_secret_key = ENV['JWT_SECRET_KEY']
+  d.secret_key_base = ENV['SECRET_KEY_BASE']
 end
 

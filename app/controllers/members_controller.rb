@@ -1,20 +1,13 @@
+# frozen_string_literal: true
 class MembersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authorized
+
+  def index
+    @users = User.all
+    render json: @users, each_serializer: UserSerializer, adapter: :json_api, status: :ok
+  end
 
   def show
-    user = get_user_from_token
-    render json: {
-      message: "You're in!",
-      user: user
-    }
+    render json: current_user, serializer: UserSerializer, adapter: :json_api, meta: { token: decoded_token }, status: :created
   end
-
-  private
-  def get_user_from_token
-    jwt_payload = JWT.decode(request.headers['Authorization'].split(' ')[1],
-                             Rails.application.credentials.jwt_secret_key).first
-    user_id = jwt_payload['sub']
-    user = User.find(user_id.to_s)
-  end
-
 end
