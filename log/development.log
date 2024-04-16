@@ -2005,3 +2005,253 @@ Processing by MembersController#show as HTML
 Completed 201 Created in 50ms (Views: 38.4ms | ActiveRecord: 0.5ms | Allocations: 6377)
 
 
+[dotenv] Set [36mPORT[0m, [36mWEB_CONCURRENCY[0m, [36mSECRET_KEY_BASE[0m, and [36mBASE_ROUTE[0m
+[dotenv] Loaded [33m.env[0m
+Started GET "/roles" for ::1 at 2024-04-16 16:00:29 -0600
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RolesController#index as HTML
+  [1m[36mRole Load (0.4ms)[0m  [1m[34mSELECT "roles".* FROM "roles"[0m
+  ↳ app/controllers/roles_controller.rb:9:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.48ms)
+Completed 200 OK in 25ms (Views: 12.6ms | ActiveRecord: 0.9ms | Allocations: 9998)
+
+
+Started POST "/login" for ::1 at 2024-04-16 16:04:38 -0600
+Processing by AuthController#login as HTML
+  Parameters: {"auth"=>{"email"=>"client@client.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "client@client.com"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:8:in `login'
+[active_model_serializers]   [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:5:in `role'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (9.93ms)
+Completed 202 Accepted in 233ms (Views: 11.9ms | ActiveRecord: 1.8ms | Allocations: 10543)
+
+
+Started GET "/member-data" for ::1 at 2024-04-16 16:04:55 -0600
+Processing by MembersController#show as HTML
+  [1m[36mJwtDenylist Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE JwtDenylist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers]   [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:5:in `role'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (2.63ms)
+Completed 201 Created in 34ms (Views: 7.6ms | ActiveRecord: 3.0ms | Allocations: 7535)
+
+
+Started GET "/member-data" for ::1 at 2024-04-16 16:05:31 -0600
+Processing by MembersController#show as HTML
+  [1m[36mJwtDenylist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers]   [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:5:in `role'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (2.5ms)
+Completed 201 Created in 20ms (Views: 6.4ms | ActiveRecord: 0.6ms | Allocations: 6392)
+
+
+Started GET "/member-data" for ::1 at 2024-04-16 16:06:18 -0600
+Processing by MembersController#show as HTML
+  [1m[36mJwtDenylist Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE JwtDenylist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers]   [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:5:in `role'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (22.62ms)
+Completed 201 Created in 119ms (Views: 59.1ms | ActiveRecord: 3.2ms | Allocations: 6392)
+
+
+Started GET "/member-data" for ::1 at 2024-04-16 16:07:41 -0600
+Processing by MembersController#show as HTML
+  [1m[36mJwtDenylist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers]   [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:5:in `role'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (1.54ms)
+Completed 201 Created in 28ms (Views: 14.6ms | ActiveRecord: 0.5ms | Allocations: 6380)
+
+
+Started GET "/member-data" for ::1 at 2024-04-16 16:08:15 -0600
+Processing by MembersController#show as HTML
+  [1m[36mJwtDenylist Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+[active_model_serializers]   [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:5:in `role'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (2.51ms)
+Completed 201 Created in 129ms (Views: 87.6ms | ActiveRecord: 0.6ms | Allocations: 6377)
+
+
+Started POST "/logout" for ::1 at 2024-04-16 16:08:21 -0600
+Processing by AuthController#logout as HTML
+  Parameters: {"auth"=>{}}
+  [1m[36mJwtDenylist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:20:in `logout'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/auth_controller.rb:20:in `logout'
+  [1m[36mJwtDenylist Create (3.4ms)[0m  [1m[32mINSERT INTO "jwt_denylist" ("jti", "exp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["exp", "2024-04-17 22:04:39"], ["created_at", "2024-04-16 22:08:21.940228"], ["updated_at", "2024-04-16 22:08:21.940228"]]
+  ↳ app/controllers/auth_controller.rb:20:in `logout'
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/auth_controller.rb:20:in `logout'
+  [1m[36mJwtDenylist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "b98569d3-8ec7-4203-8fcb-8b7501c64a2e"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 29ms (Views: 12.4ms | ActiveRecord: 5.5ms | Allocations: 9918)
+
+
+Started GET "/roles" for ::1 at 2024-04-16 16:08:22 -0600
+Processing by RolesController#index as HTML
+  [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT "roles".* FROM "roles"[0m
+  ↳ app/controllers/roles_controller.rb:9:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.87ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.1ms | Allocations: 1158)
+
+
+Started POST "/login" for ::1 at 2024-04-16 16:08:32 -0600
+Processing by AuthController#login as HTML
+  Parameters: {"auth"=>{"email"=>"admin@admin.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "admin@admin.com"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:8:in `login'
+[active_model_serializers]   [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:5:in `role'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (1.5ms)
+Completed 202 Accepted in 234ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 1733)
+
+
+Started POST "/logout" for ::1 at 2024-04-16 16:08:39 -0600
+Processing by AuthController#logout as HTML
+  Parameters: {"auth"=>{}}
+  [1m[36mJwtDenylist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "5a067810-c534-4294-a3db-c63656288e3d"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "5a067810-c534-4294-a3db-c63656288e3d"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:32:in `current_user'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "5a067810-c534-4294-a3db-c63656288e3d"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+  [1m[36mCACHE JwtDenylist Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "5a067810-c534-4294-a3db-c63656288e3d"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:20:in `logout'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/auth_controller.rb:20:in `logout'
+  [1m[36mJwtDenylist Create (1.4ms)[0m  [1m[32mINSERT INTO "jwt_denylist" ("jti", "exp", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["jti", "5a067810-c534-4294-a3db-c63656288e3d"], ["exp", "2024-04-17 22:08:33"], ["created_at", "2024-04-16 22:08:39.182710"], ["updated_at", "2024-04-16 22:08:39.182710"]]
+  ↳ app/controllers/auth_controller.rb:20:in `logout'
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/auth_controller.rb:20:in `logout'
+  [1m[36mJwtDenylist Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "jwt_denylist" WHERE "jwt_denylist"."jti" = ? LIMIT ?[0m  [["jti", "5a067810-c534-4294-a3db-c63656288e3d"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:19:in `decoded_token'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 200 OK in 27ms (Views: 1.2ms | ActiveRecord: 3.1ms | Allocations: 5418)
+
+
+Started GET "/roles" for ::1 at 2024-04-16 16:08:39 -0600
+Processing by RolesController#index as HTML
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT "roles".* FROM "roles"[0m
+  ↳ app/controllers/roles_controller.rb:9:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.13ms)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.2ms | Allocations: 1157)
+
+
+Started POST "/login" for ::1 at 2024-04-16 16:08:48 -0600
+Processing by AuthController#login as HTML
+  Parameters: {"auth"=>{"email"=>"client@client.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "client@client.com"], ["LIMIT", 1]]
+  ↳ app/controllers/auth_controller.rb:8:in `login'
+[active_model_serializers]   [1m[36mRole Load (0.1ms)[0m  [1m[34mSELECT "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/serializers/user_serializer.rb:5:in `role'
+[active_model_serializers] Rendered UserSerializer with ActiveModelSerializers::Adapter::JsonApi (1.47ms)
+Completed 202 Accepted in 254ms (Views: 1.7ms | ActiveRecord: 0.2ms | Allocations: 1731)
+
+
